@@ -1,0 +1,209 @@
+%\documentstyle[10pt,twoside]{article}
+%\documentstyle[twoside]{article}
+\documentclass[twoside]{article}
+\setlength{\oddsidemargin}{0.25 in}
+\setlength{\evensidemargin}{-0.25 in}
+\setlength{\topmargin}{-0.6 in}
+\setlength{\textwidth}{6.5 in}
+\setlength{\textheight}{8.5 in}
+\setlength{\headsep}{0.75 in}
+\setlength{\parindent}{0 in}
+\setlength{\parskip}{0.1 in}
+
+\usepackage{graphicx}
+\usepackage{url}
+
+%
+% The following commands sets up the lecnum (lecture number)
+% counter and make various numbering schemes work relative
+% to the lecture number.
+%
+\newcounter{lecnum}
+\renewcommand{\thepage}{\thelecnum-\arabic{page}}
+\renewcommand{\thesection}{\thelecnum.\arabic{section}}
+\renewcommand{\theequation}{\thelecnum.\arabic{equation}}
+\renewcommand{\thefigure}{\thelecnum.\arabic{figure}}
+\renewcommand{\thetable}{\thelecnum.\arabic{table}}
+\newcommand{\dnl}{\mbox{}\par}
+
+%
+% The following macro is used to generate the header.
+%
+\newcommand{\lecture}[4]{
+   \pagestyle{myheadings}
+   \thispagestyle{plain}
+   \newpage
+   \setcounter{lecnum}{#1}
+   \setcounter{page}{1}
+   \noindent
+   \begin{center}
+   \framebox{
+      \vbox{\vspace{2mm}
+    \hbox to 6.28in { {\bf CMPSCI~677~~~Operating Systems
+                        \hfill Spring 2019} }
+       \vspace{4mm}
+       \hbox to 6.28in { {\Large \hfill Lecture #1: #2  \hfill} }
+       \vspace{2mm}
+       \hbox to 6.28in { {\it Professor: #3 \hfill Scribe: #4} }
+      \vspace{2mm}}
+   }
+   \end{center}
+   \markboth{Lecture #1: #2}{Lecture #1: #2}
+   \vspace*{4mm}
+}
+
+%
+% Convention for citations is authors' initials followed by the year.
+% For example, to cite a paper by Leighton and Maggs you would type
+% \cite{LM89}, and to cite a paper by Strassen you would type \cite{S69}.
+% (To avoid bibliography problems, for now we redefine the \cite command.)
+%
+\renewcommand{\cite}[1]{[#1]}
+
+% \input{epsf}
+
+%Use this command for a figure; it puts a figure in wherever you want it.
+%usage: \fig{NUMBER}{FIGURE-SIZE}{CAPTION}{FILENAME}
+\newcommand{\fig}[4]{
+            \vspace{0.2 in}
+            \setlength{\epsfxsize}{#2}
+            \centerline{\epsfbox{#4}}
+            \begin{center}
+            Figure \thelecnum.#1:~#3
+            \end{center}
+    }
+
+% Use these for theorems, lemmas, proofs, etc.
+\newtheorem{theorem}{Theorem}[lecnum]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newenvironment{proof}{{\bf Proof:}}{\hfill\rule{2mm}{2mm}}
+
+% Some useful equation alignment commands, borrowed from TeX
+\makeatletter
+\def\eqalign#1{\,\vcenter{\openup\jot\m@th
+  \ialign{\strut\hfil$\displaystyle{##}$&$\displaystyle{{}##}$\hfil
+      \crcr#1\crcr}}\,}
+\def\eqalignno#1{\displ@y \tabskip\@centering
+  \halign to\displaywidth{\hfil$\displaystyle{##}$\tabskip\z@skip
+    &$\displaystyle{{}##}$\hfil\tabskip\@centering
+    &\llap{$##$}\tabskip\z@skip\crcr
+    #1\crcr}}
+\def\leqalignno#1{\displ@y \tabskip\@centering
+  \halign to\displaywidth{\hfil$\displaystyle{##}$\tabskip\z@skip
+    &$\displaystyle{{}##}$\hfil\tabskip\@centering
+    &\kern-\displaywidth\rlap{$##$}\tabskip\displaywidth\crcr
+    #1\crcr}}
+\makeatother
+
+% **** IF YOU WANT TO DEFINE ADDITIONAL MACROS FOR YOURSELF, PUT THEM HERE:
+
+
+
+% Some general latex examples and examples making use of the
+% macros follow.    
+
+\begin{document}
+
+%FILL IN THE RIGHT INFO.
+%\lecture{**LECTURE-NUMBER**}{**DATE**}{**LECTURER**}{**SCRIBE**}
+\lecture{3}{January 30}{Prashant Shenoy}{{Josh Sennett}}
+
+\section{Overview}
+
+This lecture covered the following topics.
+\begin{description}
+  \item[Module 1: Processes Review]
+  \item[Module 2: Introduction to Threads]
+  \item[Module 3: User-Level versus Kernel-Level Threads]
+
+\end{description}
+
+\section{Lecture Notes}
+
+\subsection{Module 1: Processes Review}
+\subsubsection{Review of Processes}
+
+\textbf{Multiprogramming} refers to multiple processes running concurrently in a single processor. Operating Systems virtualize the CPU, providing concurrent access to a single processor via \textbf{time-sharing} which creates the illusion of parallelism. \textbf{Multiprocessing}, on the other hand, refers to using multiple processors on a single machine to achieve true parallelism. 
+
+The \textbf{Process Control Block (PCB)} is a kernel data structure that keeps track of current processes. It has data about active processes, such as how much memory is allocated to each and where memory pages are stored in RAM for each process. Each process has its own address space with its corresponding code, global and local variables, stack, and heap. 
+
+\textbf{Process State Transitions} refer to the states a process may be in at any given time, including:
+\begin{itemize}
+  \item New (newly created)
+  \item Running (currently running on the CPU)
+  \item Waiting (waiting for something, such as I/O, an event, or a lock) 
+  \item Ready (waiting for its turn to run on the CPU)
+  \item Finished (terminated, to be cleaned up)
+\end{itemize}
+
+\subsection{Uniprocessor Scheduling}
+
+\textbf{Scheduling} refers to the policy of the operating system in choosing which process to run next on the CPU among all processes that are ready to execute. Different scheduling policies optimize different \textbf{performance metrics}, and no single scheduling policy can optimize all metrics together. 
+
+Common uniprocessor scheduling policies include:
+\begin{itemize}
+  \item Round-robin: Each process gets a quantum of time in CPU. Processes are executed in a circular order and without any priority.
+  \item Shortest Job First (SJF): an optimal policy in reducing the average waiting time among processes; however, it has the limitation that the length of the job needs to be known beforehand. 
+  \item First-In First-Out (FIFO): ``non-preemptive'' scheduling; simple, but it can lead to longer average wait times due to short processes being stuck in queue behind long processes.
+  \item Lottery Scheduling: This involves random selection of which processes runs next. Users can control the proportion of time each process gets by deciding on the number of lottery tickets allocated to each process. 
+  \item Earliest Deadline First (EDF): an application decides the deadline for a CPU task. EDF is useful in real-time systems where time guarantee is important (for example, in video streaming).
+\end{itemize}
+
+\subsection{Performance Metrics}
+Typical performance metrics include:
+\begin{itemize}
+  \item Throughput of jobs
+  \item CPU utilization
+  \item Turnaround time (completion rate of jobs)
+  \item Response time
+  \item Fairness (all jobs treated equally)
+\end{itemize}
+The scheduler needs to be carefully selected based on the desired performance metrics. Improving one metric may make others worse. For example, one might want to emphasize response time in for an interactive application, while throughput needs be prioritized over response time in cluster computing.
+
+\subsubsection{Process Behavior}
+Processes may be CPU-bound, I/O-bound, or most often, alternate between being CPU-bound and I/O-bound. \textbf{CPU bursts} refer to the time of CPU usage between two periods of I/O. CPU bursts can be modeled using a hyperexponential behavior, which is useful when deciding an optimal schedule. 
+
+\subsubsection{Process Scheduling}
+In a simple \textbf{priority queue}, each job is assigned a priority level. The kernel first looks to the top-most priority queue that is not empty, and executes processes in the queue until the queue is empty. If the top-most priority queue is empty, the scheduler will look at a lower level, and so on. The highest priority task keeps running until it is complete or it goes to do I/O. Kernel tasks usually have higher priority than the tasks that run in the user space. Priorities can also be assigned among the user applications. For example, Skype gives higher priority to audio processing.
+
+In \textbf{multi-level feedback queues (MLFQ)}, the OS uses a priority queue with round-robin scheduling within queues and priority scheduling across queues. However, a process's priority is determined dynamically. When a new process starts, it is put at the highest priority level; if it uses an entire quantum of its CPU time, its priority level is lowered. If it does not use its whole time (if it switches to I/O), it is promoted to a higher priority level.
+
+This scheduler tries to achieve the performance of the shortest job first scheduler. I/O bound processes get higher priority because they spend relatively short duration of time hogging the CPU. New processes always get the highest priority. If a process spends the entire time quanta assigned to it, its priority level drops by 1 and the process moves to the lower-priority queue. If a process does not use entire time slot of CPU, priority level is increased by 1 and the process moves to the higher-priority queue. This results in I/O bound jobs always moving to the highest-priority queue. This scheduler is implementing shortest job first without a prior knowledge of the job length. The assumption is that the I/O bound jobs are shortest because I/O operations are not executed on CPU. Priorities for a job changes every quantum depending on whether the job spent its last time quantum doing computation or I/O.
+
+\subsubsection{Process vs. Threads}
+Traditional processes have one stream of execution and are also called single-threaded. But, a process can also have multiple streams of execution if it is multi-threaded. A \textbf{thread} is is a flow of control through an address space; each thread gets its own registers, including its own \textbf{program counter (PC)}. Two threads of a single process share a heap and code, but not necessarily the stack. 
+
+\subsubsection{Why use threads?}
+Multithreading allows for concurrency within a single process. In a a uniprocessor machine, threads achieve concurrency through time-sharing of the CPU. Even on a single processor, this can cause a process to improve in performance, because while one thread is doing I/O, another thread can execute on the CPU. On a multiprocessor machine, threads can be run truly in parallel by running simultaneously on different cores and can therefore improve performance. Today, most systems (such as smartphones and laptops) have multiple cores.
+
+Threads allow faster execution of processes by being scheduled on additional cores independently. Creating and switching to a thread is more efficient than creating or switching to a process due to the lower overhead cost of context switches. In addition, threads have full access to the address space which give programmers greater flexibility, allowing for shared data rather than message passing. Another important advantage of a multi-threaded process compared to a single threaded process is that the entire process does not block in case of I/O. In a multi-threaded process, other threads can continue to make progress while the thread doing I/O blocks. 
+
+In between single- and multi-threaded programming, there is \textbf{finite-state machine} (event-based) programming. Event-based programming attempts to achieve concurrency with a single threaded process, using non-blocking calls and asynchronous communication (which is more complex to program).
+
+From a software engineering perspective, writing multi-threaded applications is more challenging because a developer has to deal with event-based or blocking system calls which need to take care of the rest of the task when a thread finishes its execution. In comparison, writing a single-threaded application already assumes that all data is there at the moment of the next task execution. An example of such case could be reading a text file. 
+
+Examples for use of multi-threaded programs include browser actions such as clicking on a link for a web page. Upon clicking on a web link, images can be sequentially downloaded from the server then sent to be parses and then rendered. In a multi-threaded browser, images can be downloaded in parallel while the page is parsed and parts are rendered as they are ready. The browser does not have to wait for everything to be downloaded and parsed before rendering; as a result, the user will see parts of the page more quickly. 
+
+Multithreading is also used within servers. If a server only runs a single thread, it might have a queue of requests from clients which are blocked until the first request is completed. Using a pool of threads allows the server to respond to multiple requests simultaneously, thereby reducing latency. The idea is for the server to have a dispatcher and a few worker threads. When a client request comes in, the dispatcher assigns one of the idle worker threads to handle this requests. Efficiency is achieved because some of the worker threads are I/O bound and some are doing computation.
+
+\subsubsection{Thread Management}
+When programming with threads, developers can use \textbf{synchronization primitives} (such as locks, mutexes, or semaphores) to protect from shared access conflicts. For example, synchronization primitives prevent two threads from updating an object at the same time (in which one tramples the changes of the other). Without using these, programs may have \textbf{race conditions} in which concurrent operations have non-deterministic behavior, which can cause unexpected behavior or bugs which are difficult to find and resolve. 
+
+\subsection{Module 3: User-Level vs Kernel-Level Threads}
+
+There are two types of threads: \textbf{kernel-level} threads (created and managed by the kernel) and \textbf{user-level} threads (created and managed by user libraries). For user-level threads, the entire functionality of threads is implemented in the user library. The kernel is \textit{unaware} of there being multiple threads; the kernel sees the address space of the threads as a traditional single-threaded process. Whenever the thread as a process gets scheduled by the kernel, the user-level library will run and pick a thread with its own thread-scheduling technique. So the scheduling now becomes a two-level process: scheduling a process by the kernel and picking a thread to run by the user-level library. Creation of threads is very lightweight because it doesn't require system calls. It is also flexible because the developer can customize the scheduler rather than relying on the OS's scheduler. However, if any thread makes a blocking call, the entire process (all of its threads) will be blocked. Since the kernel is unaware of other threads, there is no real parallelism that can be achieved through multiple cores.
+
+The operating system is aware of \textbf{kernel-level} threads, and can schedule them explicitly in the same way that it can schedule processes. The advantages of kernel-level threads are that they allow for real parallelism between threads, and only a single layer of scheduling is needed. The disadvantages, however, are that they are more expensive (requiring context switches), and less flexible (since they must use the OS's scheduling policy). 
+
+\subsubsection{Scheduler Activation}
+\textbf{Scheduler Activation} tries to bridge the gap between user- and kernel-level threads. Scheduler activation is a mechanism for providing kernel-level thread functionality with user-level thread flexibility and performance. The library explicitly tells the kernel of the number of threads; while there is still no true parallelism, this allows for concurrency: you do not need to block a process just because a thread blocks. 
+
+\subsubsection{Light-Weight Processes}
+\textbf{Light-weight processes (LWP)} are an abstraction between processes and threads, originally used in Solaris and some UNIX systems. For each process, the developer specifies the number of schedulable entities, and maps threads to entities. Schedulable entities are scheduled by the kernel like processes, while threads mapped to an entity are scheduled at the user level. You may have multiple LWPs per process, and depending on the mapping of threads to LWPs, the developer can decide the level of parallelism in a process. At the two ends of the spectrum, 1:1 mapping of threads to LWPs is similar to kernel-level threading, since each thread will be scheduled by the operating system and can be scheduled concurrently; N:1 mapping, in which all threads of a process are mapped to a single LWP, is similar to user-level threading.
+
+
+\end{document}
