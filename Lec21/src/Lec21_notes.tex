@@ -1,0 +1,298 @@
+%\documentstyle[10pt,twoside]{article}
+%\documentstyle[twoside]{article}
+\documentclass[twoside]{article}
+\setlength{\oddsidemargin}{0.25 in}
+\setlength{\evensidemargin}{-0.25 in}
+\setlength{\topmargin}{-0.6 in}
+\setlength{\textwidth}{6.5 in}
+\setlength{\textheight}{8.5 in}
+\setlength{\headsep}{0.75 in}
+\setlength{\parindent}{0 in}
+\setlength{\parskip}{0.1 in}
+
+\usepackage{graphicx}
+\usepackage{url}
+
+%
+% The following commands sets up the lecnum (lecture number)
+% counter and make various numbering schemes work relative
+% to the lecture number.
+%
+\newcounter{lecnum}
+\renewcommand{\thepage}{\thelecnum-\arabic{page}}
+\renewcommand{\thesection}{\thelecnum.\arabic{section}}
+\renewcommand{\theequation}{\thelecnum.\arabic{equation}}
+\renewcommand{\thefigure}{\thelecnum.\arabic{figure}}
+\renewcommand{\thetable}{\thelecnum.\arabic{table}}
+\newcommand{\dnl}{\mbox{}\par}
+
+%
+% The following macro is used to generate the header.
+%
+\newcommand{\lecture}[4]{
+   \pagestyle{myheadings}
+   \thispagestyle{plain}
+   \newpage
+   \setcounter{lecnum}{#1}
+   \setcounter{page}{1}
+   \noindent
+   \begin{center}
+   \framebox{
+      \vbox{\vspace{2mm}
+    \hbox to 6.28in { {\bf CMPSCI~677~~~Distributed~\&~Operating Systems
+                        \hfill Spring 2019} }
+       \vspace{4mm}
+       \hbox to 6.28in { {\Large \hfill Lecture #1: #2  \hfill} }
+       \vspace{2mm}
+       \hbox to 6.28in { {\it Lecturer: #3 \hfill Scribe: #4} }
+      \vspace{2mm}}
+   }
+   \end{center}
+   \markboth{Lecture #1: #2}{Lecture #1: #2}
+   \vspace*{4mm}
+}
+
+%
+% Convention for citations is authors' initials followed by the year.
+% For example, to cite a paper by Leighton and Maggs you would type
+% \cite{LM89}, and to cite a paper by Strassen you would type \cite{S69}.
+% (To avoid bibliography problems, for now we redefine the \cite command.)
+%
+\renewcommand{\cite}[1]{[#1]}
+
+% \input{epsf}
+
+%Use this command for a figure; it puts a figure in wherever you want it.
+%usage: \fig{NUMBER}{FIGURE-SIZE}{CAPTION}{FILENAME}
+\newcommand{\fig}[4]{
+            %\vspace{0.2 in}
+            \centerline{\includegraphics[scale=#2]{#4}}
+            \begin{center}
+            Figure \thelecnum.#1:~#3
+            \end{center}
+    }
+
+% Use these for theorems, lemmas, proofs, etc.
+\newtheorem{theorem}{Theorem}[lecnum]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newenvironment{proof}{{\bf Proof:}}{\hfill\rule{2mm}{2mm}}
+
+% Some useful equation alignment commands, borrowed from TeX
+\makeatletter
+\def\eqalign#1{\,\vcenter{\openup\jot\m@th
+  \ialign{\strut\hfil$\displaystyle{##}$&$\displaystyle{{}##}$\hfil
+      \crcr#1\crcr}}\,}
+\def\eqalignno#1{\displ@y \tabskip\@centering
+  \halign to\displaywidth{\hfil$\displaystyle{##}$\tabskip\z@skip
+    &$\displaystyle{{}##}$\hfil\tabskip\@centering
+    &\llap{$##$}\tabskip\z@skip\crcr
+    #1\crcr}}
+\def\leqalignno#1{\displ@y \tabskip\@centering
+  \halign to\displaywidth{\hfil$\displaystyle{##}$\tabskip\z@skip
+    &$\displaystyle{{}##}$\hfil\tabskip\@centering
+    &\kern-\displaywidth\rlap{$##$}\tabskip\displaywidth\crcr
+    #1\crcr}}
+\makeatother
+
+% **** IF YOU WANT TO DEFINE ADDITIONAL MACROS FOR YOURSELF, PUT THEM HERE:
+
+
+
+% Some general latex examples and examples making use of the
+% macros follow.
+
+\begin{document}
+
+%FILL IN THE RIGHT INFO.
+%\lecture{**LECTURE-NUMBER**}{**DATE**}{**LECTURER**}{**SCRIBE**}
+\lecture{20}{April 22}{Prashant Shenoy}{\textbf{Anirudha Desai(2017), Aggrey Muhebwa(2019)}}
+\section{Announcements}
+The final exam is on Friday next week, 5/3/2019. It will be a take home exam and you can use any material on the internet, but you have to cite the sources that you'll use. The solutions can either be typeset or handwritten and then scanned. The exam is 24 hours and the solutions will be uploaded to gradescope. 
+\section{Distributed File Systems}
+The class was primarily about stand-alone(UNIX) file systems. 
+  
+ 
+ There are many file systems. Linux can read many file systems. But windows on the other hand has its own proprietary file systems and cannot read linux file system. A FS manifests as files and directories. 
+ \par
+ A file is a named collection of logically related data. OS has no way to interpret the files. It is the application's job to interpret the file. 
+A file system :
+\begin{enumerate}
+    \item Provides a logical view of data and storage functions 
+    \item User-friendly interface 
+    \item Provides facility to create , modify , organize, and delete files.
+    \item Provides sharing among users in a controlled manner - Permissions can be granted on files to specific users. 
+    \item Provides protection 
+\end{enumerate}
+A directory is an index of filess contained in a folder. 
+
+\subsection{UNIX File System review}
+A user file is a linear array of bytes. A file structure is a directed acyclic graph as shown in fig \ref{fs}.
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale = 0.5]{Figures/file_structure1.png}
+\caption{Typical file structure } \label{fs}
+\end{figure}
+
+But the operating system does not interpret English. It only understands numbers. Every directory/file has an associated number in its metadata. This number is the \emph{inode} number.  The OS can understand this inode number. All inodes are stored at a special location on disk [super block].
+Within a file structure, directories may not be shared, but files may be. Shared in this context means links. 2 files can be linked to the same inode number. There can be a \emph{hard link} or a \emph{soft link} (shortcuts to a file). But directories cannot have links because we can end up with a cycle when a child directory has a hard link back to its parent directory. 
+
+\par 
+Inodes store file attributes and a multi-level index that has a list of disk block locations for the file. As shown in figure \ref{inode}, there are multiple levels of indirection used to point to different blocks of a file. In this multi-level index format, we can technically store $11 * 1024 * 1024 \approx 4gb $\\ file. 
+It should be noted that this is one way of implementing a FS. There are many other ways. 
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale = 0.3]{Figures/inode3.png}
+\caption{inode multi level index} \label{inode}
+\end{figure}
+
+\subsection{Inode structure}
+
+The following fields comprise the inode number : mode, owne\_id, dir\_file, protection bits, last access time, last write time, last inode time, size, ref\_cnt and Address[0]...Address[14] with mulit-level index.
+
+\subsection{Distributed File Systems (DFS)}
+So far, the class was about single FS. A DFS is  more complicated. A Distributed File System consists of two major parts;
+\begin{enumerate}
+    \item File service which is a specification of what the file system offers, e.g client primitives, APIs, etc
+    \item File server which is a process that implements the file service. A single Machine can heve several servers (UNIX, DOS) running on it
+\end{enumerate}
+\subsubsection{File Service}
+2 types : The slides could be referred for diagrammatic representation.
+\begin{enumerate}
+    \item Remote access model : Work done at server. It is a stateless server. Server may be a bottleneck. 
+    \par
+        The client needs to send RPC to server for every action. The file is stored on the server. There is excessive communication happening in this model. The server needs to maintain the state to know the status of communication with  a client. 
+    \item Upload/download model : Work done at client. It is a stateful server. Simple functionality. Moves files/blocks, need storage.
+    \par 
+    The server moves the files from local storage to client storage. The client performs the processes and pushes the file back to server. This makes the server stateless. This is very slow in the beginning in order to load the file.\\
+    \textbf{Question:} In the upload/Download model, what happens when there is concurrent access to the same files ?\\
+    \textbf{Answer:} Do not make the two concurrent process copy the original file as they will overwrite each others' changes. The solution is to have your clients send all their requests to the server and make changes from there. 
+\end{enumerate}
+\subsubsection{System Structure: Server Type}
+Stateless server
+\begin{enumerate}
+    \item No information is kept at the server in between client requests
+    \item All information need to service a request must be provided by the client with each request
+    \item More tolerant to server crashes
+\end{enumerate}
+Stateful server
+\begin{enumerate}
+    \item Server maintains information about client accesses
+    \item Shorted request messages 
+    \item Better performance 
+    \item consistency is easy to achieve
+\end{enumerate}
+\subsection{NFS Architecture}
+
+The NFS architecture is shown in fig \ref{nfs}.
+\begin{figure}[htbp]
+\centering
+\includegraphics[height=2.3in,width=6.7in]{Figures/NFSarch.png}
+Most widely used distributed file system that uses a virtual file system layer to handle local and remote files. 
+\caption{NFS Architecture} \label{nfs}
+\end{figure}
+
+Either the data is on local FS or the data is on another machine. Then we go through the NFS. The NFS, as can be seen from the figure, is essentially an add-on to the OS. \\
+\textbf{Question:}What is the system call layer in the NFS architecture ?\\
+\textbf{Answer:} This is an interface that the operating system is exporting to the application. \\ 
+It should be noted that the NFs is just a layer that sits on top of the regular file system, but is not a file system in itself.\\
+\textbf{Question:} Is the server stub going to aler the client when there are is a set of files available ? \\ 
+\textbf{Answer:} NFS likes like any other file system. You send a specific request to the server and you get an equally specific response depending on whether the file exists or not.\\ 
+
+\subsubsection{NFS Operations}
+The basic NFS operations can be referred on the slides. The highlights here are that the v3 NFS was stateless where v4 is stateful. \emph{Open} and \emph{Close} were not present in v3 because it was stateless. These operations are present in v4. \\ 
+The server exports the directory that will be mount on that client so as to be accessed locally, similar to how a network drive is set up in windows. \\
+\textbf{Question: } If NFS V3 is stateless, what happens to the server if you mount 1000 volumes ? \\ 
+\textbf{Answer:} We are obtaining client resources, not server resources so it has a little to no impact. \\ 
+\textbf{Question:} How do you handle duplicates on the local system and the server ?\\
+\textbf{Answer:} NFS won't handle duplicates for you. However, since they are mounted at different mount points, they will have different paths. \\
+
+\subsubsection{Communication}
+The communication between client and server between v3 and v4 of NFS is represented in fig \ref{nfscom}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale = 0.5]{Figures/nfscom.jpg}
+\caption{communication in NFS} \label{nfscom}
+\end{figure}
+
+In v3, the client takes the open call and does a \emph{lookup}. If the file exists, server returns the lookup name. The client then sends a \emph{read} call. \\
+In v4, a bunch of calls can be sent like lookup, open and read. The server performs all the actions and returns to client. The v4 is faster because of lesser \emph{round trip time}. 
+
+\subsubsection{Naming: Mount Protocol}
+
+Mounting tells the OS about where to put the external storage like USB etc. The OS takes care of the mapping. Users can access remote files using local names. 
+
+\subsubsection{Automounting}
+In a multiuser setting, 2 different users can share data together. In v3, mounting mounts everything the NFS has access to. But, with automounting, the user can mount exactly what is needed. It is basically, mount on demand. 
+
+\subsubsection{File Attributes}
+\begin{figure}[htbp]
+\centering
+\includegraphics[height=2in,width=6.7in]{Figures/mandtAttribs.png}
+\caption{Mandatory attributes for \texttt{NFS}} \label{md}
+\end{figure}
+The attributes in fig \ref{md} is mandatory for every FS. With v4, there were additional attributes that are recommended which are listed in fig \ref{rc}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[height=2.3in,width=6.7in]{Figures/rcndAttribs.png}
+\caption{Recommended attributes for \texttt{NFS}} \label{rc}
+\end{figure}
+
+\subsubsection{Semantics of File Sharing}
+ 
+\begin{figure}[htbp]
+\centering
+\includegraphics[height=2in,width=6.5in]{Figures/semanticsFS.png}
+\caption{Different File sharing semantics} \label{fss}
+\end{figure}
+If a file is shared among users concurrently, it is necessary to define the semantics of reading and writing. The semantics which enforces an absolute ordering on file reads and writes is known as {\bf UNIX semantics}. This semantics is generally desirable as it avoids inconsistency issues across different users. However, for a distributed system, Unix semantics can only be achieved if there is one file server and clients do not cache files. A no cache policy, for a distributed file system, can cause serious performance issues. Hence weaker semantics are adopted. By allowing clients to update in local caches might create inconsistent versions of files across users. For example, if a client locally modifies a cached file and shortly thereafter another client reads the file from the server, the second client will get an obsolete file. To avoid these issues, a weaker semantics known as {\bf Session semantics} is adopted. In this semantics, only when the file is closed the changes are made visible to other clients. A description of different file sharing semantics is shown in Figure \ref{fss}. \\
+\textbf{Question:} Does the NFS support horizontal partitioning ? \\ 
+\textbf{Answer:} NFS just mounts the already partitioned volumes (which is usually done by the systems administrator )
+
+\subsubsection{File Locking in NFS}
+\begin{figure}[htbp]
+\centering
+\includegraphics[height=1.5in,width=5.8in]{Figures/fileLocking.png}
+\caption{\texttt{NFS}v$4$ operations related to file locking} \label{fl}
+\end{figure}
+\texttt{NFS} allows clients to use locking at a file system level. Locking can also be enabled for a a particular section  of a file. Typically applications for databases and emails use file system level locking. Locking was not part of \texttt{NFS} until version $3$. \texttt{NFS} v$4$ supports locking as part of the protocol. A description of several file locking operations of \texttt{NFS} v$4$ is shown in Figure \ref{fl}. \\ 
+\textbf{Question:} Can you implement a lock by creating a lock file on the disk ? \\ 
+\textbf{Answer:} Yes, you can, but you have to make sure that access to that file is atomic. \\ 
+\textbf{Question: }How does client caching that supports open delegation handle failures ?
+\textbf{Answer: } This is not resilient to failure. If failure occurs, changes will be lost. \\ 
+
+\subsubsection{Client Caching}
+\begin{figure}[htbp]
+\centering
+\includegraphics[height=3in,width=6.5in]{Figures/clientCaching.png}
+\caption{Client side caching in \texttt{NFS}} \label{cc}
+\end{figure}
+\begin{figure}[htbp]
+\centering
+\includegraphics[height=2.8in,width=6.3in]{Figures/clientCachingDelegation.png}
+\caption{File delegation in \texttt{NFS} v$4$} \label{cc2}
+\end{figure}
+\texttt{NFS} does not enforce any caching policy to clients. Figure \ref{cc} depicts the client side implementation of caching in \texttt{NFS}. The client talks to memory cache and then to disk cache to access a file. If the file is not present in the caches, then the request is forwarded to the \texttt{NFS} server over RPC call. \texttt{NFS} by default implements remote access file service model. \texttt{NFS} v$4$ extends this architecture to accommodate upload/download file service model as well. If a single client is connected to the file server, the server delegates the master file to the client. All read/write operation occurs at the delegated copy. This is known as {\bf File Delegation}. When the file is closed or when the server recalls the delegation, the delegated file is sent back to the server. The overall file delegation procedure is depicted in Figure \ref{cc2}.
+\subsubsection{RPC Failures}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[height=3in,width=6.5in]{Figures/RPCfailure.png}
+\caption{RPC retransmissions using a duplicate request cache} \label{rpcf}
+\end{figure}
+For \texttt{NFS} request over UDP, both the client and the server have to implement timeout and retransmission mechanism due to unreliability of UDP protocol. Generally RPC file service model is adopted. Retransmitting an RPC request requires the RPC operation to be {\bf idempotent} i.e. any number of execution of the same RPC request should produce same result. Idem-potency is achieved through a duplicate-request cache. Each RPC is assigned a transaction Id. The cache stores the results for a transaction. When ever a RPC request comes, it is first checked with the cache. If a cache hit occurs, the result is returned. If not, the transaction is executed, the cache is updated and the result is returned back. Figure \ref{rpcf} depicts retransmissions of RPC requests using a duplicate request cache.
+
+\subsubsection{Handling re-transmissions}
+Use a duplicate request cache if;The request is still in progress, the reply has just been returned or the reply has been some time ago, but was lost 
+
+\subsubsection{Security}
+Secure RPC is used in NFS v4. NFS V4 , all client server communications are encrypted.
+\subsubsection{Replica servers}
+NFS v4 supports replication of servers. This is implementation specific. 
+
+\end{document}
