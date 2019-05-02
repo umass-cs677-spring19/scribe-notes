@@ -1,0 +1,249 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.12)  1 MAY 2019 22:46
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**Lecture_21_Coda_xFS.tex
+(./Lecture_21_Coda_xFS.tex
+LaTeX2e <2017-04-15>
+Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+) (./graphicx.sty
+Package: graphicx 1996/10/31 v1.0c Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 99.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip10
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+\c@lecnum=\count87
+\c@theorem=\count88
+
+(./Lecture_21_Coda_xFS.aux)
+\openout1 = `Lecture_21_Coda_xFS.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count89
+\scratchdimen=\dimen105
+\scratchbox=\box26
+\nofMPsegments=\count90
+\nofMParguments=\count91
+\everyMPshowfont=\toks15
+\MPscratchCnt=\count92
+\MPscratchDim=\dimen106
+\MPnumerator=\count93
+\makeMPintoPDFobject=\count94
+\everyMPtoPDFconversion=\toks16
+) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)))
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2018/01/21 v0.26 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+<Figures/codaarch.png, id=1, 686.565pt x 418.56375pt>
+File: Figures/codaarch.png Graphic file (type png)
+<use Figures/codaarch.png>
+Package pdftex.def Info: Figures/codaarch.png  used on input line 123.
+(pdftex.def)             Requested size: 433.62pt x 264.35439pt.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 130.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 130.
+
+[1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./Figures/codaarch.png>]
+<Figures/serv_rep.png, id=12, 782.925pt x 337.26pt>
+File: Figures/serv_rep.png Graphic file (type png)
+<use Figures/serv_rep.png>
+Package pdftex.def Info: Figures/serv_rep.png  used on input line 135.
+(pdftex.def)             Requested size: 433.62pt x 186.7904pt.
+<Figures/disc_oper.png, id=13, 1204.5pt x 346.29375pt>
+File: Figures/disc_oper.png Graphic file (type png)
+<use Figures/disc_oper.png>
+Package pdftex.def Info: Figures/disc_oper.png  used on input line 142.
+(pdftex.def)             Requested size: 433.62pt x 124.66565pt.
+[2 <./Figures/serv_rep.png> <./Figures/disc_oper.png>]
+<Figures/xfsarch.png, id=18, 1187.43625pt x 352.31625pt>
+File: Figures/xfsarch.png Graphic file (type png)
+<use Figures/xfsarch.png>
+Package pdftex.def Info: Figures/xfsarch.png  used on input line 160.
+(pdftex.def)             Requested size: 433.62pt x 128.65617pt.
+<Figures/striping.jpg, id=19, 4173.5925pt x 2120.92375pt>
+File: Figures/striping.jpg Graphic file (type jpg)
+<use Figures/striping.jpg>
+Package pdftex.def Info: Figures/striping.jpg  used on input line 171.
+(pdftex.def)             Requested size: 433.62pt x 220.3249pt.
+ [3 <./Figures/xfsarch.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 177--178
+
+ []
+
+<Figures/mirroring.png, id=23, 625.33624pt x 150.5625pt>
+File: Figures/mirroring.png Graphic file (type png)
+<use Figures/mirroring.png>
+Package pdftex.def Info: Figures/mirroring.png  used on input line 187.
+(pdftex.def)             Requested size: 289.07999pt x 69.60419pt.
+<Figures/RAID4.png, id=25, 622.325pt x 251.94125pt>
+File: Figures/RAID4.png Graphic file (type png)
+<use Figures/RAID4.png>
+Package pdftex.def Info: Figures/RAID4.png  used on input line 194.
+(pdftex.def)             Requested size: 289.07999pt x 117.03229pt.
+
+Underfull \vbox (badness 2334) has occurred while \output is active []
+
+ [4 <./Figures/striping.jpg> <./Figures/mirroring.png>]
+<Figures/RAID5.png, id=32, 604.2575pt x 622.325pt>
+File: Figures/RAID5.png Graphic file (type png)
+<use Figures/RAID5.png>
+Package pdftex.def Info: Figures/RAID5.png  used on input line 212.
+(pdftex.def)             Requested size: 289.07999pt x 297.72502pt.
+ [5 <./Figures/RAID4.png>] [6 <./Figures/RAID5.png>]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 244.
+
+ (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 244.
+<Figures/HDFS.png, id=41, 389.455pt x 237.88875pt>
+File: Figures/HDFS.png Graphic file (type png)
+<use Figures/HDFS.png>
+Package pdftex.def Info: Figures/HDFS.png  used on input line 253.
+(pdftex.def)             Requested size: 289.07999pt x 176.58301pt.
+
+[7 <./Figures/HDFS.png>]
+
+LaTeX Warning: Reference `fig:HDFS' on page 21-8 undefined on input line 261.
+
+[8] (./Lecture_21_Coda_xFS.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 1597 strings out of 492982
+ 22827 string characters out of 6134895
+ 80195 words of memory out of 5000000
+ 5158 multiletter control sequences out of 15000+600000
+ 6384 words of font info for 23 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 41i,6n,25p,995b,218s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmsl10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmtt10.pfb>
+Output written on Lecture_21_Coda_xFS.pdf (8 pages, 1099728 bytes).
+PDF statistics:
+ 83 PDF objects out of 1000 (max. 8388607)
+ 51 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 46 words of extra memory for PDF output out of 10000 (max. 10000000)
+
